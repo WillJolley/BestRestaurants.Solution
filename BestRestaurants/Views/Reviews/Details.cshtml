@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Review
+@using BestRestaurants.Models
+
+<h2>Review Details</h2>
+<hr />
+<h3>@Html
+
+@if (@Model..Count == 0)
+{
+  <h3>No reviews have been added to this restaurant yet!</h3>
+} 
+else
+{
+  <h3>Restaurants:</h3>
+  <ul>
+    @foreach (Review review in model)
+    {
+      <li>@Html.ActionLink($"{review.Restaurant.Name}", "Details", "Reviews", new { id = review.Description })</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

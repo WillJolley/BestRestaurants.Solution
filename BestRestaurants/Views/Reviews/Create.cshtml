@@ -1,0 +1,23 @@
+@{
+    Layout = "_Layout";
+}
+
+@model BestRestaurants.Models.Review
+
+<h4>Add a Review</h4>
+
+<p><strong>NOTE:</strong> You need to have at least one Restaurant before you can add a Review!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Restaurants") to add a restaurant.</p>
+
+@using (Html.BeginForm("Create", "Reviews", FormMethod.Post))
+{
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description)
+  
+        @Html.LabelFor(model => model.RestaurantId)
+        @Html.DropDownList("RestaurantId", (SelectList)ViewBag.RestaurantId, "Select a Restaurant")
+
+    <button type="submit" class="btn btn-primary">Add Review</button>
+}
+
+<p>@Html.ActionLink("Back to Reviews", "Index")</p>

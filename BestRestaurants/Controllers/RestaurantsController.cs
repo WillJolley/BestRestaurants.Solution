@@ -61,11 +61,11 @@ namespace BestRestaurants.Controllers
         return RedirectToAction("Index");
       }
 
-        public ActionResult Delete(int id)
-    {
-      Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      return View(thisRestaurant);
-    }
+      public ActionResult Delete(int id)
+      {
+        Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+        return View(thisRestaurant);
+      }
 
 
       [HttpPost, ActionName("Delete")]
