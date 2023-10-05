@@ -1,6 +1,7 @@
 @{
   Layout = "_Layout";
 }
+@using BestRestaurants.Models
  @model BestRestaurants.Models.Restaurant
 
   <h2>Restaurant Details</h2>
@@ -10,3 +11,18 @@
   <p>@Html.ActionLink("Back to list", "Index")</p> 
   <p>@Html.ActionLink("Edit Restaurant", "Edit", new { id = Model.RestaurantId })</p>
   <p>@Html.ActionLink("Delete Restaurant", "Delete", new { id = Model.RestaurantId })</p>
+
+  <h2>Reviews:</h2>
+  @if (@Model.Reviews.Count == 0)
+  {
+  <h3>No reviews yet!</h3>
+  } 
+  else
+  {
+    <ul>
+      @foreach (Review review in Model.Reviews)
+      {
+        <li>@Html.ActionLink($"{review.Description}", "Details", "Restaurants", new { id = review.ReviewId })</li>
+      }
+    </ul>
+  }
